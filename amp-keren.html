@@ -1,0 +1,481 @@
+<!doctype html>
+<html ⚡ lang="id">
+<head>
+  <meta charset="utf-8">
+  <title>Neon Planetary Orbit AMP</title>
+  <link rel="canonical" href="https://contoh-domain.com/dragon-orbit">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+  <style amp-boilerplate>
+    body {
+      -webkit-animation: -amp-start 8s steps(1,end) 0s 1 normal both;
+      animation: -amp-start 8s steps(1,end) 0s 1 normal both;
+    }
+    @keyframes -amp-start { from { visibility: hidden } to { visibility: visible } }
+  </style>
+  <noscript>
+    <style amp-boilerplate>
+      body { animation: none; }
+    </style>
+  </noscript>
+
+  <style amp-custom>
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    /* BACKGROUND */
+    body {
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #020617 0%, #02010a 40%, #000000 100%);
+      overflow-x: hidden;
+      color: #e5e7eb;
+    }
+
+    /* MAIN WRAPPER */
+    .page {
+      width: 100vw;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 0;
+      padding-bottom: 16px;
+    }
+
+    /* LOGO BAR ATAS */
+    .logo-bar {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 0 0 4px;
+      z-index: 20;
+    }
+
+    .logo-img {
+  display: block;
+  max-width: 90vw;
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(148, 163, 255, 0.55));
+  /* 🔥 animasi detak */
+  animation: pulse-logo 2s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+
+    /* ==== ANIMASI RAINBOW BORDER ==== */
+    @keyframes spin-border {
+      0%   { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* ===== CTA PANEL (LOGIN / DAFTAR) ===== */
+    .cta-panel {
+  margin-top: 8px;
+  margin-bottom: 16px;          /* jarak ke H1 box */
+  max-width: 92vw;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: nowrap;            /* ❌ tidak wrap, selalu sejajar */
+}
+
+/* container border pelangi */
+.cta-btn {
+  position: relative;
+  flex: 1 1 50%;                /* tombol lebih lebar */
+  min-width: 160px;             /* paksa agak besar */
+  padding: 4px;                 /* border pelangi sedikit lebih tebal */
+  border-radius: 999px;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+    /* layer pelangi berputar di luar */
+    .cta-btn::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        0deg,
+        #ff0000,
+        #ffa500,
+        #ffff00,
+        #00ff57,
+        #00e5ff,
+        #7b3fff,
+        #ff00c8,
+        #ff0000
+      );
+      animation: spin-border 2.2s linear infinite;
+      border-radius: inherit;
+    }
+
+    /* tombol emas di dalam */
+    .cta-btn::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      right: 3px;
+      bottom: 3px;
+      background: linear-gradient(135deg, #fbbf24, #b9770e);
+      border-radius: 999px;
+      box-shadow: 0 5px 0 #000;
+      z-index: 1;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .cta-btn span {
+  position: relative;
+  z-index: 2;
+  display: block;
+  padding: 14px 26px;           /* ⬅️ tinggi & panjang tombol */
+  font-size: 2rem;              /* ⬅️ lebih besar */
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.09em;
+  color: hsl(0, 0%, 100%);
+  transition: transform 0.2s ease;
+}
+
+    .cta-btn:active::after {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #000;
+    }
+
+    .cta-btn:active span {
+      transform: translateY(2px);
+    }
+
+    /* ===== H1 BOX DENGAN BORDER “API EMAS” (SAMA POLA DENGAN CTA) ===== */
+    .headline-wrap {
+      max-width: 90vw;
+      margin-bottom: 32px;   /* jarak ke orbit */
+      width: 100%;
+    }
+
+    .headline-box {
+      position: relative;
+      padding: 3px;          /* ketebalan border */
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    /* border emas berputar */
+    .headline-box::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(
+        #fbbf24,
+        #f97316,
+        #fde68a,
+        #facc15,
+        #f97316,
+        #fbbf24
+      );
+      animation: spin-border 6s linear infinite;
+      border-radius: inherit;
+    }
+
+    /* panel dalam gelap */
+    .headline-box::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      right: 3px;
+      bottom: 3px;
+      background: radial-gradient(circle at top, #020617, #020617 45%, #02010a 100%);
+      border-radius: 15px;
+      box-shadow:
+        0 0 18px rgba(0,0,0,0.9),
+        0 0 26px rgba(250, 204, 21, 0.55);
+      z-index: 1;
+    }
+
+    .headline-title {
+      position: relative;
+      z-index: 2;
+      margin: 0;
+      padding: 10px 16px;
+      font-size: 18px;
+      line-height: 0.5;
+      text-align: center;
+      color: #fef9c3;
+      text-shadow:
+        0 0 4px rgba(250, 250, 210, 0.7),
+        0 0 8px rgba(251, 191, 36, 0.9);
+    }
+
+    @media (max-width: 360px) {
+      .headline-title {
+        font-size: 16px;
+      }
+      .cta-btn span {
+        font-size: 0.8rem;
+        padding: 9px 10px;
+      }
+    }
+
+    /* ===== ORBIT AREA ===== */
+    .orbit-wrapper {
+      position: relative;
+      width: 78vw;
+      max-width: 380px;
+      aspect-ratio: 1 / 1;
+      margin-top: 50px;   /* jarak sudah diatur dari headline-wrap */
+    }
+
+    /* CORE (MATAHARI / HERO) */
+    .core {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 95%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+    }
+
+    .core-img {
+      width: 100%;
+      height: auto;
+      animation: pulse-core 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 18px rgba(252, 211, 77, 0.55));
+    }
+
+    @keyframes pulse-core {
+      0%, 100% { transform: scale(0.8); }
+      50%      { transform: scale(1.36); }
+    }
+
+    @keyframes pulse-logo {
+  0%, 100% {
+    transform: scale(0.8);
+    filter: drop-shadow(0 0 10px rgba(148, 163, 255, 0.55));
+  }
+  50% {
+    transform: scale(1.06);
+    filter: drop-shadow(0 0 18px rgba(148, 163, 255, 0.9));
+  }
+}
+    .core::before {
+      content: "";
+      position: absolute;
+      inset: 12%;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(252, 211, 77, 0.45), transparent 70%);
+      filter: blur(10px);
+      z-index: -1;
+    }
+
+    /* NEON ORBIT RINGS */
+    .orbit-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: 999px;
+      transform: translate(-50%, -50%);
+      border-width: 2px;
+      border-style: solid;
+      box-shadow: 0 0 18px rgba(0,0,0,0.7);
+    }
+
+    .orbit-ring.r1 {
+      width: 85%;
+      height: 85%;
+      border-color: rgba(56, 189, 248, 0.9);
+      box-shadow:
+        0 0 10px rgba(56, 189, 248, 0.9),
+        0 0 24px rgba(56, 189, 248, 0.6);
+    }
+
+    .orbit-ring.r2 {
+      width: 112%;
+      height: 112%;
+      border-color: rgba(244, 114, 182, 0.9);
+      box-shadow:
+        0 0 10px rgba(244, 114, 182, 0.9),
+        0 0 24px rgba(244, 114, 182, 0.6);
+    }
+
+    .orbit-ring.r3 {
+      width: 132%;
+      height: 132%;
+      border-color: rgba(129, 140, 248, 0.9);
+      box-shadow:
+        0 0 12px rgba(129, 140, 248, 0.9),
+        0 0 28px rgba(129, 140, 248, 0.65);
+    }
+
+    .orbit-layer {
+      position: absolute;
+      inset: 0;
+      transform-origin: 50% 50%;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+
+    .orbit-layer.fast   { animation-name: rot-fast; animation-duration: 14s; }
+    .orbit-layer.medium { animation-name: rot-med;  animation-duration: 20s; }
+    .orbit-layer.slow   { animation-name: rot-slow; animation-duration: 28s; }
+    .orbit-layer.rev    { animation-direction: reverse; }
+
+    @keyframes rot-fast { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes rot-med  { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes rot-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    .satellite {
+      position: absolute;
+      width: 20%;
+      max-width: 65px;
+      filter: drop-shadow(0 0 12px rgba(148, 163, 255, 0.85));
+    }
+
+    .satellite amp-img {
+      width: 100%;
+      height: auto;
+    }
+
+    /* Orbit 1 (dekat) */
+    .sat-r1-a { top: 7%;   left: 50%; transform: translate(-50%, 0); }
+    .sat-r1-b { top: 50%;  left: 93%; transform: translate(-50%, -50%); }
+    .sat-r1-c { top: 93%;  left: 50%; transform: translate(-50%, -50%); }
+    .sat-r1-d { top: 50%;  left: 7%;  transform: translate(-50%, -50%); }
+
+    /* Orbit 2 (sedang) */
+    .sat-r2-a { top: -3%;  left: 50%; transform: translate(-50%, 0); }
+    .sat-r2-b { top: 50%;  left: 103%; transform: translate(-50%, -50%); }
+    .sat-r2-c { top: 103%; left: 50%;  transform: translate(-50%, -50%); }
+    .sat-r2-d { top: 50%;  left: -3%;  transform: translate(-50%, -50%); }
+
+    /* Orbit 3 (luar) */
+    .sat-r3-a { top: -10%; left: 50%; transform: translate(-50%, 0); }
+    .sat-r3-b { top: 50%;  left: 110%; transform: translate(-50%, -50%); }
+    .sat-r3-c { top: 110%; left: 50%;  transform: translate(-50%, -50%); }
+    .sat-r3-d { top: 50%;  left: -10%; transform: translate(-50%, -50%); }
+
+    @media (min-width: 768px) {
+      .orbit-wrapper {
+        width: 360px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <!-- LOGO MATHISI DI PALING ATAS -->
+    <header class="logo-bar">
+      <amp-img
+        src="logo.png"
+        width="800"
+        height="500"
+        layout="intrinsic"
+        class="logo-img"
+        alt="Mathisi Cafe &amp; Bar"
+      ></amp-img>
+    </header>
+
+    <!-- CTA PANEL: LOGIN & DAFTAR (border pelangi, kotak diam) -->
+    <section class="cta-panel">
+      <a href="#login" class="cta-btn">
+        <span>LOGIN</span>
+      </a>
+      <a href="#daftar" class="cta-btn">
+        <span>DAFTAR</span>
+      </a>
+    </section>
+
+    <!-- H1 DALAM BOX DENGAN BORDER “API EMAS”, STYLE MIRIP CTA -->
+    <section class="headline-wrap">
+      <div class="headline-box">
+        <h1 class="headline-title">
+          SCATER188 - RAJANYA SCATER HITAM
+        </h1>
+      </div>
+    </section>
+
+    <!-- AREA ORBIT -->
+    <div class="orbit-wrapper">
+      <div class="orbit-ring r1"></div>
+      <div class="orbit-ring r2"></div>
+      <div class="orbit-ring r3"></div>
+
+      <div class="core">
+        <amp-img
+          src="hero.png"
+          width="500"
+          height="500"
+          layout="responsive"
+          class="core-img"
+          alt="Hero core"
+        ></amp-img>
+      </div>
+
+      <!-- ORBIT 1 -->
+      <div class="orbit-layer fast">
+        <div class="satellite sat-r1-a">
+          <amp-img src="dragon.png" width="400" height="400" layout="responsive" alt="Planet 1"></amp-img>
+        </div>
+        <div class="satellite sat-r1-b">
+          <amp-img src="dragon.png" width="400" height="400" layout="responsive" alt="Planet 2"></amp-img>
+        </div>
+        <div class="satellite sat-r1-c">
+          <amp-img src="dragon.png" width="400" height="400" layout="responsive" alt="Planet 3"></amp-img>
+        </div>
+        <div class="satellite sat-r1-d">
+          <amp-img src="dragon.png" width="400" height="400" layout="responsive" alt="Planet 4"></amp-img>
+        </div>
+      </div>
+
+      <!-- ORBIT 2 -->
+      <div class="orbit-layer medium rev">
+        <div class="satellite sat-r2-a">
+          <amp-img src="dragon.png" width="400" height="400" layout="responsive" alt="Planet 5"></amp-img>
+        </div>
+        <div class="satellite sat-r2-b">
+          <amp-img src="dragon.png" width="400" height="400" layout="responsive" alt="Planet 6"></amp-img>
+        </div>
+        <div class="satellite sat-r2-c">
+          <amp-img src="dragon.png" width="400" height="400" layout="responsive" alt="Planet 7"></amp-img>
+        </div>
+        <div class="satellite sat-r2-d">
+          <amp-img src="dragon.png" width="400" height="400" layout="responsive" alt="Planet 8"></amp-img>
+        </div>
+      </div>
+
+      <!-- ORBIT 3 -->
+      <div class="orbit-layer slow">
+        <div class="satellite sat-r3-a">
+          <amp-img src="dragon.png" width="400" height="400" layout="responsive" alt="Planet 9"></amp-img>
+        </div>
+        <div class="satellite sat-r3-b">
+          <amp-img src="dragon.png" width="400" height="400" layout="responsive" alt="Planet 10"></amp-img>
+        </div>
+        <div class="satellite sat-r3-c">
+          <amp-img src="dragon.png" width="400" height="400" layout="responsive" alt="Planet 11"></amp-img>
+        </div>
+        <div class="satellite sat-r3-d">
+          <amp-img src="dragon.png" width="400" height="400" layout="responsive" alt="Planet 12"></amp-img>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
